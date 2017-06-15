@@ -1,0 +1,47 @@
+<style>
+  label {
+    display: inline-block; 
+    width: 5em;
+  }
+  fieldset div {
+    margin-bottom: 2em;
+  }
+  fieldset .help {
+    display: inline-block;
+  }
+  .ui-tooltip {
+    width: 210px;
+  }
+</style>
+<div class="box">
+  <form>
+    <fieldset>
+      <div>
+        <label for="firstname">名字</label>
+        <input id="firstname" name="firstname" title="请提供您的名字。">
+      </div>
+      <div>
+        <label for="lastname">姓氏</label>
+        <input id="lastname" name="lastname" title="请提供您的姓氏。">
+      </div>
+      <div>
+        <label for="address">地址</label>
+        <input id="address" name="address" title="您的家庭或工作地址。">
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+ <script>
+  $(function(){
+
+    var tooltips = $( "input[title]" ).tooltip();
+    $( "<button>" )
+      .text( "Show help" )
+      .button()
+      .click(function() {
+        tooltips.tooltip( "open" );
+      })
+      .insertAfter( "form" );
+  });
+</script>

@@ -1,0 +1,113 @@
+<div class="pageContent">
+  <div class="panel" defh="40">
+    <div class="panelHeader">
+    <div class="panelHeaderContent">
+      <h1>病人基本信息</h1>
+    </div>
+    </div>
+    <div class="panelContent">
+      病人编号：<input type="text" name="patientNo" class="textInput">
+      <ul class="rightTools">
+        <li><a class="button" id="dialogAdd"><span>创建病例</span></a></li>
+        <li><div class="buttonDisabled"><div class="buttonContent"><button>病人治疗流程</button></div></div></li>
+        <li><div class="buttonDisabled"><div class="buttonContent"><button>按病人编号检索病例</button></div></div></li>
+        <li><div class="buttonDisabled"><div class="buttonContent"><button>从病人列表选取病例</button></div></div></li>
+      </ul>
+    </div>
+    <div class="panelFooter">
+      <div class="panelFooterContent"></div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div id="tabsL" class="tabs">
+    <ul class="tabsHeader">
+      <li><a href="#tabs-1">实验室检测</a></li>
+      <li><a href="#tabs-2">病人处方</a></li>
+      <li><a href="#tabs-3">病人服药情况</a></li>
+      <li><a href="#tabs-4">基线调查</a></li>
+      <li><a href="#tabs-5">随访</a></li>
+    </ul>
+    <div class="tabsContent">
+      <div id="tabs-1" class="clearfix">
+  
+        <div layoutH="146" style="float:left; display:block; overflow:auto; width:240px; border:solid 1px #CCC; line-height:21px; background:#fff">
+            <ul class="tree treeFolder">
+            <li><a href="javascript">实验室检测</a>
+              <ul>
+                <li><a href="demo/pagination/list1.html" target="ajax" rel="jbsxBox">尿检</a></li>
+                <li><a href="demo/pagination/list1.html" target="ajax" rel="jbsxBox">HIV检测</a></li>
+                <li><a href="demo/pagination/list1.html" target="ajax" rel="jbsxBox">HCV检测</a></li>
+                <li><a href="demo/pagination/list1.html" target="ajax" rel="jbsxBox">TB检测</a></li>
+              </ul>
+            </li>
+            
+             </ul>
+        </div>
+        
+        <div id="jbsxBox" class="unitBox" style="margin-left:246px;">
+          <!--#include virtual="list1.html" -->
+        </div>
+  
+      </div>
+      
+      <div id="tabs-2" class="clearfix">病人处方</div>
+      
+      <div id="tabs-3" class="clearfix">病人服药情况</div>
+      
+      <div id="tabs-4" class="clearfix">基线调查</div>
+      
+      <div id="tabs-5" class="clearfix">随访</div>
+    </div>
+    <div class="tabsFooter">
+      <div class="tabsFooterContent"></div>
+    </div>
+  </div>
+</div>
+
+
+<div id="dialog-add" title="创建病例">
+  <form method="post" action="demo/pagination/ajaxDone1.html" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)" novalidate="novalidate">
+    <div class="pageFormContent" layouth="58" style="height: 203px; overflow: auto;">
+      <div class="unit clearfix">
+        <label>病历号：</label>
+        <input type="text" name="patientNo" size="30" minlength="6" maxlength="20" class="required textInput">
+      </div>
+      <div class="unit clearfix">
+        <label>病人姓名：</label>
+        <input type="text" name="patientNames" size="30" class="required textInput">
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+<script>
+  $(function(){
+    $( "#dialog-add" ).dialog({
+      resizable: false,
+      width: 580,
+      height: 224,
+      modal: true,
+      autoOpen: false,
+      buttons: {
+        "提交": function() {
+          $( this ).dialog( "close" );
+        },
+        "取消": function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+
+    $( "#dialogAdd" ).click(function() {
+      $( "#dialog-add" ).dialog( "open" );
+    });
+
+    $( "#tabsL" ).tabs();
+
+    $( "#accordionA" ).accordion({
+      collapsible: true
+    });
+  })
+</script>

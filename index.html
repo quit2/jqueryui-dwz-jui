@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery UI</title>
+<link rel="stylesheet" href="./css/jquery-ui.min.css">
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/core.css">
+<link rel="stylesheet" href="./js/uploadify/css/uploadify.css">
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/dwz.core.js"></script>
+<script src="js/dwz.barDrag.js"></script>
+<script src="js/dwz.drag.js"></script>
+<script src="js/dwz.tree.js"></script>
+<script src="js/dwz.accordion.js"></script>
+<script src="js/dwz.ui.js"></script>
+<script src="js/dwz.contextmenu.js"></script>
+<script src="js/dwz.navTab.js"></script>
+<script src="js/dwz.pagination.js"></script>
+<script src="js/dwz.stable.js"></script>
+<script src="js/dwz.alertMsg.js"></script>
+<script src="js/dwz.sortDrag.js"></script>
+<!--表单验证-->
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/dwz.validate.method.js"></script>
+<script src="js/dwz.ajax.js"></script>
+<script src="js/uploadify/scripts/jquery.uploadify.min.js"></script>
+<script src="js/dwz.file.js"></script>
+<!--表单验证-->
+<!--本地化-->
+<script src="js/dwz.regional.zh.js"></script>
+<!--本地化-->
+
+<script type="text/javascript">
+$(function(){
+  DWZ.init("dwz.frag.xml", {
+    loginUrl:"login_dialog.html", loginTitle:"登录",  // 弹出登录对话框
+    //loginUrl:"login.html",  // 跳到登录页面
+    ui:{hideMode:'offsets'}, //【可选】hideMode:navTab组件切换的隐藏方式，支持的值有’display’，’offsets’负数偏移位置的值，默认值为’display’
+    callback:function(){
+      initEnv();
+    }
+  });
+});
+</script>
+
+</head>
+
+<body>
+  <div id="layout">
+    <div id="header">
+      <div class="headerNav clearfix">
+        <a class="logo" href="javascript:;">标志</a>
+      </div>
+    </div>
+
+    <div id="leftside">
+      <div id="sidebar_s">
+        <div class="collapse">
+          <div class="toggleCollapse"><div></div></div>
+        </div>
+      </div>
+      <div id="sidebar">
+        <div class="toggleCollapse"><h2>主菜单</h2><div>收缩</div></div>
+
+        <div class="accordion" fillSpace="sidebar">
+          <div class="accordionHeader">
+            <h2><span>Folder</span>界面组件</h2>
+          </div>
+          <div class="accordionContent">
+            <ul class="tree treeFolder">
+              <li><a>主框架面板</a>
+                <ul>
+                  <li><a href="demo_page1.html" target="navTab" rel="page1" title="页面一（自定义标签名）">页面一</a></li>
+                  <li><a href="accordion.html" target="navTab" rel="accordion" title="">类目导航</a></li>
+                </ul>
+              </li>
+              <li><a>常用组件(jQueryUi)</a>
+                <ul>
+                  <li><a href="tabs.html" target="navTab" rel="tabs">标签页（Tabs）</a></li>
+                  <li><a href="sortable.html" target="navTab" rel="sortable">排序（Sortable）</a></li>
+                  <li><a href="dialog.html" target="navTab" rel="dialog">对话框（Dialog）</a></li>
+                  <li><a href="selectable.html" target="navTab" rel="selectable">选择（Selectable）</a></li>
+                  <li><a href="tooltip.html" target="navTab" rel="tooltip">工具提示框（Tooltip）</a></li>
+                  <li><a href="menu.html" target="navTab" rel="menu">菜单（Menu）</a></li>
+                  <li><a href="datepicker.html" target="navTab" rel="datepicker">日期选择器（Datepicker）</a></li>
+                  <li><a href="spinner.html" target="navTab" rel="spinner">旋转器（Spinner）</a></li>
+                  <li><a href="table.html" target="navTab" rel="table">表格数据</a></li>
+                  <li><a href="checkboxradio.html" target="navTab" rel="checkboxradio">按钮</a></li>
+                  <li><a href="slider.html" target="navTab" rel="slider">滑块（Slider）</a></li>
+                  <li><a href="autocomplete.html" target="navTab" rel="autocomplete">自动完成（Autocomplete）</a></li>
+                  <li><a href="drag_form.html" target="navTab" rel="drag_form">可拖动表单示例</a></li>
+                  <li><a href="droppable.html" target="navTab" rel="droppable">放置（Droppable）</a></li>
+                  <li><a href="w_alert.html" target="navTab" rel="alertDialog">提示窗口</a></li>
+                </ul>
+              </li>
+              <li><a>表单组件(jui)</a>
+                <ul>
+                  <li><a href="w_validation.html" target="navTab" rel="w_validation">表单验证</a></li>
+                  <li><a href="w_button.html" target="navTab" rel="w_button">按钮</a></li>
+                  <li><a href="w_textInput.html" target="navTab" rel="w_textInput">文本框/文本域</a></li>
+                  <li><a href="w_html5_upload.html" target="navTab" rel="html5_upload">html5文件上传</a></li>
+                </ul>
+              </li>
+              <li><a>组合应用</a>
+                <ul>
+                  <li><a href="layout1.html" target="navTab" rel="layout1">局部刷新分页1</a></li>
+                  <li><a href="cart.html" target="navTab" rel="cart">购物车演示</a></li>
+                </ul>
+              </li>
+              <li><a href="dwz.frag.xml" target="navTab" external="true">dwz.frag.xml</a></li>
+            </ul>
+          </div>
+          <div class="accordionHeader">
+            <h2><span>Folder</span>典型页面</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div id="navTab" class="tabsPage">
+        <div class="tabsPageHeader">
+          <div class="tabsPageHeaderContent"><!-- 显示左右控制时添加 class="tabsPageHeaderMargin" -->
+            <ul class="navTab-tab">
+              <li tabid="main" class="main"><a href="javascript:;"><span><span class="home_icon">我的主页</span></span></a></li>
+            </ul>
+          </div>
+          <div class="tabsLeft">left</div><!-- 禁用只需要添加一个样式 class="tabsLeft tabsLeftDisabled" -->
+          <div class="tabsRight">right</div><!-- 禁用只需要添加一个样式 class="tabsRight tabsRightDisabled" -->
+          <div class="tabsMore">more</div>
+        </div>
+        <ul class="tabsMoreList">
+          <li><a href="javascript:;">我的主页</a></li>
+        </ul>
+        <div class="navTab-panel tabsPageContent layoutBox">
+          <div class="page unitBox">
+            <div class="pageFormContent" layoutH="0">
+             
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="footer">Copyright &copy; 2010 京ICP备15053290号-2</div>
+
+</body>
+</html>

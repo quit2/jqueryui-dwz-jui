@@ -1,0 +1,58 @@
+<div class="box">
+	<div id="radio">
+		<input type="radio" id="radio1" name="radio"><label for="radio1">选择 1</label>
+		<input type="radio" id="radio2" name="radio" checked="checked"><label for="radio2">选择 2</label>
+		<input type="radio" id="radio3" name="radio"><label for="radio3">选择 3</label>
+	</div>
+
+
+	<div style="margin-top: 20px;">
+	  <div>
+	    <button id="rerun">运行最后的动作</button>
+	    <button id="select">选择一个动作</button>
+	  </div>
+	  <ul>
+	    <li><a href="#">打开...</a></li>
+	    <li><a href="#">保存</a></li>
+	    <li><a href="#">删除</a></li>
+	  </ul>
+	</div>
+</div>
+
+
+<script>
+    $(function(){
+    	$( "#radio" ).buttonset();
+
+
+    	$( "#rerun" )
+	      .button()
+	      .click(function() {
+	        alert( "Running the last action" );
+	      })
+	      .next()
+	        .button({
+	          text: false,
+	          icons: {
+	            primary: "ui-icon-triangle-1-s"
+	          }
+	        })
+	        .click(function() {
+	          var menu = $( this ).parent().next().show().position({
+	            my: "left top",
+	            at: "left bottom",
+	            of: this
+	          });
+	          $( document ).one( "click", function() {
+	            menu.hide();
+	          });
+	          return false;
+	        })
+	        .parent()
+	          .buttonset()
+	          .next()
+	            .hide()
+	            .menu();
+    })
+	
+</script>

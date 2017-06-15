@@ -1,0 +1,98 @@
+<div class="box">
+  <div style="float:left; display:block; overflow:hidden; width:400px; padding:0 10px; line-height:21px;">
+    <a class="button" id="opener"><span>打开对话框1</span></a>
+    <br /><br />
+    <a class="button" id="openerMessage"><span>模态消息</span></a>
+  </div>
+  <div style="float:left; display:block; overflow:hidden; width:400px; padding:0 10px; line-height:21px;">
+    <a class="button" id="openerConfirm"><span>模态确认</span></a>
+    <br /><br />
+    <a class="button" id="openerBase"><span>基本模态</span></a>
+  </div>
+
+  <div id="dialog" title="清空回收站吗？">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>这些项目将被永久删除，并且无法恢复。您确定吗？</p>
+  </div>
+
+  <div id="dialog-confirm" title="清空回收站吗？">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>这些项目将被永久删除，并且无法恢复。您确定吗？</p>
+  </div>
+
+  <div id="dialog-message" title="下载完成">
+    <p>
+      <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+      您的文件已经成功下载到文件夹中。
+    </p>
+    <p>
+      当前使用存储空间的 <b>36%</b>。
+    </p>
+  </div>
+
+  <div id="dialog-modal" title="基本的模态对话框">
+    <p>添加模态覆盖屏幕，让对话框看起来更突出，因为它让页面上其他内容变暗。Sed vel diam id libero rutrum convallis. Donec aliquet leo vel magna. Phasellus rhoncus faucibus ante. Etiam bibendum, enim faucibus aliquet rhoncus, arcu felis ultricies neque, sit amet auctor elit eros a lectus.</p>
+  </div>
+</div>
+
+ <script>
+  $(function(){
+  	$( "#dialog" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
+    });
+ 
+    $( "#opener" ).click(function() {
+      $( "#dialog" ).dialog( "open" );
+    });
+
+    <!--模态确认-->
+    $( "#dialog-confirm" ).dialog({
+      resizable: false,
+      height:140,
+      modal: true,
+      autoOpen: false,
+      buttons: {
+        "Delete all items": function() {
+          $( this ).dialog( "close" );
+        },
+        Cancel: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+
+    $( "#openerConfirm" ).click(function() {
+      $( "#dialog-confirm" ).dialog( "open" );
+    });
+
+    <!--模态消息-->
+    $( "#dialog-message" ).dialog({
+      modal: true,
+      autoOpen: false,
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+    $( "#openerMessage" ).click(function() {
+      $( "#dialog-message" ).dialog( "open" );
+    });
+
+    <!--基本的模态-->
+    $( "#dialog-modal" ).dialog({
+      height: 140,
+      modal: true,
+      autoOpen: false,
+    });
+     $( "#openerBase" ).click(function() {
+      $( "#dialog-modal" ).dialog( "open" );
+    });
+  });
+</script>

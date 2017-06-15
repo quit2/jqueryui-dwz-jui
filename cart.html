@@ -1,0 +1,75 @@
+<style>
+  h1 { padding: .2em; margin: 0; }
+  #products { float:left; width: 500px; margin-right: 2em; }
+  #cart { width: 200px; float: left; }
+  /* 定义列表样式，以便最大化 droppable */
+  #cart ol { margin: 0; padding: 1em 0 1em 3em; }
+</style>
+<div class="box">
+  <div id="products">
+    <h1 class="ui-widget-header">产品</h1>
+    <div class="accordion" fillSpace="sidebar" id="catalog" >
+      <div class="accordionContent">
+        <ul class="tree treeFolder">
+          <li><a>主框架面板</a>
+            <ul>
+              <li><a href="tabs.html" target="navTab" rel="tabs">标签页（Tabs）</a></li>
+              <li><a href="sortable.html" target="navTab" rel="sortable">排序（Sortable）</a></li>
+              <li><a href="dialog.html" target="navTab" rel="dialog">对话框（Dialog）</a></li>
+              <li><a href="selectable.html" target="navTab" rel="selectable">选择（Selectable）</a></li>
+              <li><a href="tooltip.html" target="navTab" rel="tooltip">工具提示框（Tooltip）</a></li>
+              <li><a href="menu.html" target="navTab" rel="menu">菜单（Menu）</a></li>
+              <li><a href="datepicker.html" target="navTab" rel="datepicker">日期选择器（Datepicker）</a></li>
+              <li><a href="spinner.html" target="navTab" rel="spinner">旋转器（Spinner）</a></li>
+            </ul>
+          </li>
+          <li><a>主框架面板</a>
+            <ul>
+              <li><a href="tabs.html" target="navTab" rel="tabs">标签页（Tabs）</a></li>
+              <li><a href="sortable.html" target="navTab" rel="sortable">排序（Sortable）</a></li>
+              <li><a href="dialog.html" target="navTab" rel="dialog">对话框（Dialog）</a></li>
+              <li><a href="selectable.html" target="navTab" rel="selectable">选择（Selectable）</a></li>
+              <li><a href="tooltip.html" target="navTab" rel="tooltip">工具提示框（Tooltip）</a></li>
+              <li><a href="menu.html" target="navTab" rel="menu">菜单（Menu）</a></li>
+              <li><a href="datepicker.html" target="navTab" rel="datepicker">日期选择器（Datepicker）</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+   
+  <div id="cart" class="cart">
+    <h1 class="ui-widget-header">购物车</h1>
+    <div class="ui-widget-content">
+      <ol>
+        <li class="placeholder">添加产品到这里</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    $( "#catalog li" ).draggable({
+      appendTo: "body",
+      helper: "clone"
+    });
+    $( "#cart ol" ).droppable({
+      activeClass: "ui-state-default",
+      hoverClass: "ui-state-hover",
+      accept: ":not(.ui-sortable-helper)",
+      drop: function( event, ui ) {
+        $( this ).find( ".placeholder" ).remove();
+        $( "<li></li>" ).text( ui.draggable.text() ).appendTo( this );
+      }
+    }).sortable({
+      items: "li:not(.placeholder)",
+      sort: function() {
+        // 获取由 droppable 与 sortable 交互而加入的条目
+        // 使用 connectWithSortable 可以解决这个问题，但不允许您自定义 active/hoverClass 选项
+        $( this ).removeClass( "ui-state-default" );
+      }
+    });
+  });
+</script>

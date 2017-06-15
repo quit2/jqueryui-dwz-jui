@@ -1,0 +1,43 @@
+<div class="box">
+  <p><label>日期：</label><input type="text" id="datepicker"></p>
+  <br /><br />
+  <p><label>日期：</label><input type="text" id="datepicker2"></p>
+  <br /><br />
+  <p><label>日期：</label><input type="text" id="datepicker3"></p>
+  <br /><br />
+  <form>
+    <label for="from">从：</label>
+    <input type="text" id="from" name="from">
+    <label for="to">到</label>
+    <input type="text" id="to" name="to">
+  </form>
+</div>
+ <script>
+  $(function(){
+
+    $( "#datepicker" ).datepicker();
+
+    $( "#datepicker2" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+
+    $( "#datepicker3" ).datepicker({
+      numberOfMonths: 3,
+      showButtonPanel: true
+    });
+
+    $( "#from" ).datepicker({
+      defaultDate: "+1w",
+      onClose: function( selectedDate ) {
+        $( "#to" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $( "#to" ).datepicker({
+      defaultDate: "+1w",
+      onClose: function( selectedDate ) {
+        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+  });
+</script>
